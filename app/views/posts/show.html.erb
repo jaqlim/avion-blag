@@ -1,26 +1,18 @@
-<p>
-  <strong>Title:</strong>
-  <%= @post.title %>
-</p>
+<div class="container mt-3">
+  <h1 class="mb-3"><%= @post.title %></h1>
 
-<p>
-  <strong>Content:</strong>
-  <%= @post.content %>
-</p>
+  <div class="card">
+    <div class="card-body">
+      <p class="card-text"><%= @post.content %></p>
+    </div>
+  </div>
 
-<h2>Comments</h2>
-<%= render @post.comments %>
+  <h2 class="mt-5 mb-3">Comments</h2>
+  <%= render @post.comments %>
 
-<h2>Add a comment:</h2>
-<%= form_with(model: [ @post, @post.comments.build ], local: true) do |form| %>
-  <p>
-    <%= form.label :body %><br>
-    <%= form.text_area :body %>
-  </p>
-  <p>
-    <%= form.submit %>
-  </p>
-<% end %>
-
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', posts_path %>
+  <h3 class="mt-5 mb-3">Add a comment:</h3>
+  <%= render 'comments/form' %>
+  <br>
+  <%= link_to 'Edit post', edit_post_path(@post), class: 'btn btn-info btn-sm mr-2' %> 
+  <%= link_to 'Back', posts_path, class: 'btn btn-secondary btn-sm' %>
+</div>
